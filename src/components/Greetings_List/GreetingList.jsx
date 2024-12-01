@@ -8,7 +8,7 @@ const GreetingList = ({ onEdit }) => {
   // Fetch the greeting cards from the server
   const fetchGreetings = async () => {
     try {
-      const response = await fetch("https://greetings-server-dg7y.onrender.com/greetings");
+      const response = await fetch(`${import.meta.env.VITE_DEPLOY_API}/greetings`);
       const data = await response.json();
       setGreetings(data);
     } catch (error) {
@@ -23,7 +23,7 @@ const GreetingList = ({ onEdit }) => {
   // Handle the deletion of a greeting card
   const handleDelete = async (id) => {
     try {
-      await fetch(`https://greetings-server-dg7y.onrender.com/greetings/${id}`, {
+      await fetch(`${import.meta.env.VITE_DEPLOY_API}/greetings/${id}`, {
         method: "DELETE",
       });
       // Refresh the list after deleting
